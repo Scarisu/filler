@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   filler.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 12:45:39 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/18 13:09:12 by pbernier         ###   ########.fr       */
+/*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
+/*   Updated: 2017/08/18 15:00:41 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <filler.h>
 
-void	ft_putchar(char c)
+int		main(int ac, char **av)
 {
-	write(1, &c, 1);
+	(void)ac;
+	(void)av;
+	return (0);
 }

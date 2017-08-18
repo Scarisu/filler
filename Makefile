@@ -6,7 +6,7 @@
 #    By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:32:35 by pbernier          #+#    #+#              #
-#    Updated: 2017/08/17 21:34:23 by pbernier         ###   ########.fr        #
+#    Updated: 2017/08/18 14:59:16 by pbernier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ PROJECT			=	FILLER
 NAME			=	pbernier.filler
 BINDIR			=	bin/
 SRCDIR			=	src/
-SRC				=
+SRC				=	filler.c
 OBJ				=	$(addprefix $(BINDIR),$(SRC:.c=.o))
 LIB				=	libft/libft.a
 CC				=	gcc
