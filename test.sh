@@ -1,13 +1,14 @@
-exec p1: pbernier
-Plateau 4 4:
- 1234
-000 O...
-001 ....
-002 ....
-003 ...X
-P
-1234
-001 ....
-002 ....
-003 .xxx
-=
+echo "exec p1: pbernier"
+echo "Plateau 4 4:"
+echo " 1234"
+echo "000 O..."
+echo "001 ...."
+echo "002 ...."
+echo "003 ...X"
+echo "P"
+echo "1234"
+echo "000 ...."
+echo "001 ...."
+echo "002 ...."
+echo "003 .xxx"
+echo "="
