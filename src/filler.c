@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/22 20:40:15 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/22 21:49:36 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	error(int i)
 {
 	(i == -1) ? ft_putstr("Malloc error\n") : 0;
 	(i == 0) ? ft_putstr("filler_vm: error on input\n") : 0;
-	exit(0);
+	exit(-1);
 }
 
 int		main(void)

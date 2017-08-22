@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:26:02 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/22 20:31:22 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/22 21:24:39 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	print_result(t_fil *e)
 {
-	(void)e;
+	e->piece.size = 0;
 }
