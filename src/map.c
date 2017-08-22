@@ -6,59 +6,49 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:30:55 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/21 18:59:48 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/22 18:06:46 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-void	add_coordinates(t_frame *p, int *coor)
-{
-	if (!(p->frame_list[p->nb] = (int *)malloc(sizeof(int) * 2)))
-		error(-1);
-	(p->frame_list[p->nb])[0] = coor[0];
-	(p->frame_list[p->nb])[1] = coor[1];
-	//printf("{%d - %d}\n", (p->frame_list[p->nb])[0], (p->frame_list[p->nb])[1]);
-	p->nb++;
-}
-
-void	get_info(t_fil *e)
+void	get_info(t_fil *e, int first_play)
 {
 	int		i;
 	int		height;
-	char	*line;
+	char	player_char[2];
 
 	i = 3;
 	height = -1;
-	get_next_line(1, &line) == -1 ? error(-1) : 0;
-	free(line);
+	ft_memcpy(player_char, ((char[2]){'o', 'x'}), sizeof(char[2]));
+	if (first_play == 1)
+		ft_memcpy(player_char, ((char[2]){'O', 'X'}), sizeof(char[2]));
+	get_next_line(1, &e->line) == -1 ? error(-1) : 0;
+	free(e->line);
 	while (++height < e->map.height)
 	{
-		get_next_line(1, &line) == -1 ? error(-1) : 0;
-		while (line[++i])
+		get_next_line(1, &e->line) == -1 ? error(-1) : 0;
+		while (e->line[++i])
 		{
-			if (line[i] == 'o')
+			if (e->line[i] == player_char[0])
 				add_coordinates(&e->p1, (int[2]){i - 4, height});
-			else if (line[i] == 'x')
+			else if (e->line[i] == player_char[1])
 				add_coordinates(&e->p2, (int[2]){i - 4, height});
 		}
 		i = 3;
-		free(line);
+		free(e->line);
 	}
-	e += 0;
 }
 
-void	get_map(t_map *map)
+void	get_map_size(t_fil *e)
 {
 	int		i;
-	char	*line;
 
 	i = 8;
-	get_next_line(1, &line) == -1 ? error(-1) : 0;
-	map->height = ft_atoi(&line[i]);
-	while(line[i++] != ' ')
+	get_next_line(1, &e->line) == -1 ? error(-1) : 0;
+	e->map.height = ft_atoi(&e->line[i]);
+	while (e->line[i++] != ' ')
 		;
-	map->width = ft_atoi(&line[i]);
-	printf("[%d][%d]\n", map->height, map->width);
-	free(line);
+	e->map.width = ft_atoi(&e->line[i]);
+	free(e->line);
 }
