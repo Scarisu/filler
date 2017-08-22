@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 18:19:45 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/22 21:16:12 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/23 00:16:48 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,6 @@ void	init_tab_piece(t_piece *piece)
 	piece->tab_piece[piece->height] = NULL;
 	while (++height < piece->height)
 		get_next_line(1, &piece->tab_piece[height]) == -1 ? error(-1) : 0;
-}
-
-void	clean_piece(t_piece *piece)
-{
-	int		tmp;
-
-	tmp = piece->height;
-	while (--tmp >= 0)
-		free(piece->tab_piece[tmp]);
-	free(piece->tab_piece);
-	tmp = piece->size;
-	while (--tmp >= 0)
-		free(piece->coor[tmp]);
-	free(piece->coor);
 }
 
 void	piece_coor(t_piece *piece, int sw)

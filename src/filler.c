@@ -6,13 +6,13 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/22 21:49:36 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/23 00:09:25 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-void	whith_player(t_fil *e)
+void	which_player(t_fil *e)
 {
 	get_next_line(1, &e->line) == -1 ? error(-1) : 0;
 	if (e->line[6] == '1')
@@ -37,7 +37,7 @@ int		main(void)
 	t_fil	e;
 
 	sw = 1;
-	whith_player(&e);
+	which_player(&e);
 	init(&e);
 	while (!e.line || e.line[0] != '=')
 	{
@@ -48,7 +48,7 @@ int		main(void)
 		if (e.line[0] != '=')
 		{
 			free(e.line);
-			get_info(&e, sw);
+			get_info(&e);
 			get_piece(&e);
 			print_result(&e);
 		}

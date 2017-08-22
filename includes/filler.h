@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:39:22 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/22 21:17:03 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/23 00:27:55 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,13 @@ void				error(int i);
 void				get_piece(t_fil *e);
 void				add_coordinates(t_frame *p, int *coor);
 void				first_play(t_fil *e);
-void				get_info(t_fil *e, int first_play);
+void				get_info(t_fil *e);
 void				get_map_size(t_fil *e);
 void				clean_all(t_fil *e);
 void				init(t_fil *e);
 void				print_result(t_fil *e);
 void				piece_reset(t_fil *e);
+void				clean_piece(t_piece *piece);
+void				reset_all(t_fil *e);
 
 #endif
