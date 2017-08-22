@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 16:00:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/22 18:09:28 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/22 20:03:17 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void	init(t_fil *e)
 	e->p2.nb = 0;
 	e->p1.player = 'o';
 	e->p2.player = 'x';
-	get_info(e, 1);
+	e->piece.tab_piece = NULL;
+	e->piece.size = 0;
 }

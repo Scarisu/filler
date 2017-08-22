@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/22 18:10:58 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/22 20:16:24 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int		main(void)
 
 	whith_player(&e);
 	init(&e);
+	get_info(&e, 1);
+	get_piece(&e);
+	print_result(&e);
 	while (!e.line || e.line[0] != '=')
 	{
 		get_next_line(1, &e.line) == -1 ? error(-1) : 0;
@@ -47,8 +50,11 @@ int		main(void)
 			free(e.line);
 			get_info(&e, 0);
 			get_piece(&e);
+			print_result(&e);
 		}
 	}
 	clean_all(&e);
+	printf("TADA\n");
+	while(1);
 	return (0);
 }

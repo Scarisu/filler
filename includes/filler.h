@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:39:22 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/22 18:16:54 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/22 20:15:54 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,16 @@
 # include <errno.h>
 # include <string.h>
 
-typedef struct		p_piece
+typedef struct		s_piece
 {
 	int				height;
-	int				width;	
+	int				width;
+	int				size;
 	int				**coor;
-}
+	char			**tab_piece;
+}					t_piece;
 
-typedef struct		p_frame
+typedef struct		s_frame
 {
 	char			player;
 	int				**frame_list;
@@ -44,7 +46,8 @@ typedef struct		s_fil
 {
 	char			*line;
 	char			player;
-	t_piece			data;
+	int				result[2];
+	t_piece			piece;
 	t_frame			p1;
 	t_frame			p2;
 	t_map			map;
@@ -53,6 +56,7 @@ typedef struct		s_fil
 void				error(int i);
 
 void				get_piece(t_fil *e);
+
 void				add_coordinates(t_frame *p, int *coor);
 
 void				first_play(t_fil *e);
