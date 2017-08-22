@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 16:00:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 00:39:54 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/23 01:04:16 by rlecart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	clean_all(t_fil *e)
 {
-	free(e->line);
-	free(e->p1.frame_list);
-	free(e->p2.frame_list);
+	ft_memdel((void**)&e->line);
+	ft_memdel((void**)&e->p1.frame_list);
+	ft_memdel((void**)&e->p2.frame_list);
 }
 
 void	reset_all(t_fil *e)
@@ -24,14 +24,14 @@ void	reset_all(t_fil *e)
 	e->piece.height = 0;
 	e->piece.width = 0;
 	while (--e->piece.size >= 0)
-		free(e->piece.coor[e->piece.size]);
+		ft_memdel((void**)&e->piece.coor[e->piece.size]);
 	e->piece.size = 0;
-	free(e->piece.coor);
+	ft_memdel((void**)&e->piece.coor);
 	while (--e->p1.nb >= 0)
-		free(e->p1.frame_list[e->p1.nb]);
+		ft_memdel((void**)&e->p1.frame_list[e->p1.nb]);
 	e->p1.nb = 0;
 	while (--e->p2.nb >= 0)
-		free(e->p2.frame_list[e->p2.nb]);
+		ft_memdel((void**)&e->p2.frame_list[e->p2.nb]);
 	e->p2.nb = 0;
 }
 
@@ -41,8 +41,8 @@ void	clean_piece(t_piece *piece)
 
 	tmp = piece->height;
 	while (--tmp >= 0)
-		free(piece->tab_piece[tmp]);
-	free(piece->tab_piece);
+		ft_memdel((void**)&piece->tab_piece[tmp]);
+	ft_memdel((void**)&piece->tab_piece);
 }
 
 void	init(t_fil *e)

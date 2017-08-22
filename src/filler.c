@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 00:09:25 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/23 01:08:34 by rlecart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	which_player(t_fil *e)
 		e->player = 'x';
 	else
 		error(0);
-	free(e->line);
+	ft_memdel((void**)&e->line);
 }
 
 void	error(int i)
@@ -47,7 +47,7 @@ int		main(void)
 			error(0);
 		if (e.line[0] != '=')
 		{
-			free(e.line);
+			ft_memdel((void**)&e.line);
 			get_info(&e);
 			get_piece(&e);
 			print_result(&e);
@@ -56,6 +56,6 @@ int		main(void)
 	}
 	clean_all(&e);
 	printf("TADA\n");
-	while(1);
+//	while (1);
 	return (0);
 }

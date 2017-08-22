@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 18:19:45 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 00:16:48 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/23 01:04:33 by rlecart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	piece_info(t_fil *e)
 	while (e->line[i++] != ' ')
 		;
 	e->piece.width = ft_atoi(&e->line[i]);
-	free(e->line);
+	ft_memdel((void**)&e->line);
 }
 
 void	init_tab_piece(t_piece *piece)

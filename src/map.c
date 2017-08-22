@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:30:55 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 00:02:58 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/23 01:04:26 by rlecart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	get_info(t_fil *e)
 	i = 3;
 	height = -1;
 	get_next_line(1, &e->line) == -1 ? error(-1) : 0;
-	free(e->line);
+	ft_memdel((void**)&e->line);
 	while (++height < e->map.height)
 	{
 		get_next_line(1, &e->line) == -1 ? error(-1) : 0;
@@ -32,7 +32,7 @@ void	get_info(t_fil *e)
 				add_coordinates(&e->p2, (int[2]){i - 4, height});
 		}
 		i = 3;
-		free(e->line);
+		ft_memdel((void**)&e->line);
 	}
 }
 
