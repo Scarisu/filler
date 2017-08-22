@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:30:55 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/22 18:06:46 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/22 20:25:26 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ void	get_map_size(t_fil *e)
 
 	i = 8;
 	get_next_line(1, &e->line) == -1 ? error(-1) : 0;
+	if (e->line[0] != 'P')
+		error(0);
 	e->map.height = ft_atoi(&e->line[i]);
 	while (e->line[i++] != ' ')
 		;
 	e->map.width = ft_atoi(&e->line[i]);
-	free(e->line);
 }

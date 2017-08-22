@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/22 20:16:24 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/22 20:40:15 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,26 @@ void	error(int i)
 
 int		main(void)
 {
+	int		sw;
 	t_fil	e;
 
+	sw = 1;
 	whith_player(&e);
 	init(&e);
-	get_info(&e, 1);
-	get_piece(&e);
-	print_result(&e);
 	while (!e.line || e.line[0] != '=')
 	{
-		get_next_line(1, &e.line) == -1 ? error(-1) : 0;
+		if (sw == 0)
+			get_next_line(1, &e.line) == -1 ? error(-1) : 0;
 		if (e.line[0] != '=' && e.line[0] != 'P')
 			error(0);
 		if (e.line[0] != '=')
 		{
 			free(e.line);
-			get_info(&e, 0);
+			get_info(&e, sw);
 			get_piece(&e);
 			print_result(&e);
 		}
+		sw = 0;
 	}
 	clean_all(&e);
 	printf("TADA\n");

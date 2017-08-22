@@ -6,7 +6,7 @@
 #    By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:32:35 by pbernier          #+#    #+#              #
-#    Updated: 2017/08/22 18:24:17 by pbernier         ###   ########.fr        #
+#    Updated: 2017/08/22 20:31:51 by pbernier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC				=	filler.c \
 					map.c \
 					frame.c \
 					init.c \
-					piece.c
+					piece.c \
+					result.c
 OBJ				=	$(addprefix $(BINDIR),$(SRC:.c=.o))
 LIB				=	libft/libft.a
 CC				=	gcc

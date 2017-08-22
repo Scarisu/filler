@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 18:19:45 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/22 20:16:56 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/22 20:58:38 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	clean_piece(t_piece *piece)
 	while (--piece->size >= 0)
 		free(piece->coor[piece->size]);
 	free(piece->coor);
+	piece->size = 0;
 }
 
 void	piece_coor(t_piece *piece, int sw)
@@ -58,7 +59,7 @@ void	piece_coor(t_piece *piece, int sw)
 	i = 0;
 	height = -1;
 	if (sw == 1 && !(piece->coor = (int **)malloc(sizeof(int *) * piece->size)))
-			error(-1);
+		error(-1);
 	while (++height < piece->height)
 	{
 		width = -1;
