@@ -6,14 +6,14 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:30:13 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/18 12:05:35 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/23 08:27:58 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define BUFF_SIZE 100
+# define BUFF_SIZE 2
 # include <string.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -22,23 +22,13 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 
-typedef struct		s_gnl
+typedef struct		s_line
 {
-	char			*adr;
-	char			*head;
-	char			*keep;
-	int				gol;
-	int				ret;
 	int				fd;
-	struct s_gnl	*before;
-	struct s_gnl	*next;
-}					t_gnl;
-
-typedef struct		s_gsml
-{
 	char			*tmp;
-	char			*keep_tmp;
-}					t_gsml;
+	char			buff[BUFF_SIZE + 1];
+	struct s_line	*next;
+}					t_line;
 
 typedef struct		s_list
 {

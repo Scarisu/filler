@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:26:02 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 05:16:39 by rlecart          ###   ########.fr       */
+/*   Updated: 2017/08/23 07:55:02 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_result(t_fil *e)
 }
 */
 
-void	result(t_fil *e)
+int		result(t_fil *e)
 {
 	int		x;
 	int		y;
@@ -45,12 +45,20 @@ void	result(t_fil *e)
 			{
 				clean_tab_map(&e->map);
 				reset_all(e);
-				printf("%d %d\n", x, y);
-				return ;
+				ft_putstr(ft_itoa(y));
+				ft_putstr(" ");
+				ft_putstr(ft_itoa(x));
+				ft_putstr("\n");
+				//printf("%d %d\n", x, y);
+				return (0);
 			}
 		}
 	}
 	clean_tab_map(&e->map);
 	reset_all(e);
-	printf("%d %d\n", 0, 0);
+	ft_putstr(ft_itoa(0));
+	ft_putstr(" ");
+	ft_putstr(ft_itoa(0));
+	ft_putstr("\n");
+	return (1);
 }

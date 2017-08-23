@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 18:19:45 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 05:46:10 by rlecart          ###   ########.fr       */
+/*   Updated: 2017/08/23 07:00:53 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	piece_info(t_fil *e)
 	int		i;
 
 	i = 6;
-	get_next_line(1, &e->line) == -1 ? error(-1) : 0;
+	get_next_line(0, &e->line) == -1 ? error(-1) : 0;
 	e->piece.height = ft_atoi(&e->line[i]);
 	while (e->line[i++] != ' ')
 		;

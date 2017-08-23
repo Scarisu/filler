@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 05:52:43 by rlecart          ###   ########.fr       */
+/*   Updated: 2017/08/23 08:17:31 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	which_player(t_fil *e)
 {
-	get_next_line(1, &e->line) == -1 ? error(-1) : 0;
+	get_next_line(0, &e->line) == -1 ? error(-1) : 0;
 	if (e->line[10] == '1')
 		e->player = 'o';
 	else if (e->line[10] == '2')
@@ -34,28 +34,26 @@ void	error(int i)
 int		main(void)
 {
 	int		sw;
+	int		ret;
 	t_fil	e;
 
 	sw = 1;
+	ret = 0;
+	init_struct(&e);
 	which_player(&e);
 	init(&e);
-	while (!e.line || e.line[0] != '=')
+	while (ret != 1)
 	{
 		if (sw == 0)
-			get_next_line(1, &e.line) == -1 ? error(-1) : 0;
-		if (e.line[0] != '=' && e.line[0] != 'P')
-			error(0);
-		if (e.line[0] != '=')
-		{
-			ft_memdel((void**)&e.line);
-			get_info(&e);
-			get_piece(&e);
-			result(&e);
-		}
+			get_next_line(0, &e.line) == -1 ? error(-1) : 0;
+		ft_memdel((void**)&e.line);
+		get_info(&e);
+		get_piece(&e);
+		ret = result(&e);
 		sw = 0;
 	}
 	clean_all(&e);
-	printf("TADA\n");
-//	while (1);
+//	printf("TADA\n");
+	while (1);
 	return (0);
 }

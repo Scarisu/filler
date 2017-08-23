@@ -6,7 +6,7 @@
 #    By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:32:35 by pbernier          #+#    #+#              #
-#    Updated: 2017/08/23 02:34:11 by pbernier         ###   ########.fr        #
+#    Updated: 2017/08/23 08:07:36 by pbernier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC				=	filler.c \
 OBJ				=	$(addprefix $(BINDIR),$(SRC:.c=.o))
 LIB				=	libft/libft.a
 CC				=	gcc
-FLAGS			=	-Wall -Werror -Wextra -Ofast
+FLAGS			=	-Wall -Werror -Wextra -Ofast -g
 INCLUDES		=	-I includes/ -I libft/includes/
 
 all: $(NAME)
