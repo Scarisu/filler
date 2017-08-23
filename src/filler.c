@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 01:08:34 by rlecart          ###   ########.fr       */
+/*   Updated: 2017/08/23 05:52:43 by rlecart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	which_player(t_fil *e)
 {
 	get_next_line(1, &e->line) == -1 ? error(-1) : 0;
-	if (e->line[6] == '1')
+	if (e->line[10] == '1')
 		e->player = 'o';
-	else if (e->line[6] == '2')
+	else if (e->line[10] == '2')
 		e->player = 'x';
 	else
 		error(0);
@@ -50,7 +50,7 @@ int		main(void)
 			ft_memdel((void**)&e.line);
 			get_info(&e);
 			get_piece(&e);
-			print_result(&e);
+			result(&e);
 		}
 		sw = 0;
 	}

@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 18:19:45 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 02:37:41 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/23 05:46:10 by rlecart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ void	piece_coor(t_piece *piece, int sw)
 					if (!(piece->coor[i] = (int *)malloc(sizeof(int) * 2)))
 						error(-1);
 					ft_memcpy(piece->coor[i++],
-						((int[2]){height, width}), sizeof(int[2]));
+						((int[2]){width, height}), sizeof(int[2]));
+					//printf("piece->coor[%d][0] = %d\n", i - 1, piece->coor[i - 1][0]);
+					//printf("piece->coor[%d][1] = %d\n\n", i - 1, piece->coor[i - 1][1]);
 				}
 			}
 	}
