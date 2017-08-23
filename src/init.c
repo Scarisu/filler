@@ -6,17 +6,35 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 16:00:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 01:04:16 by rlecart          ###   ########.fr       */
+/*   Updated: 2017/08/23 02:36:12 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-void	clean_all(t_fil *e)
+void	init_tab_map(t_map *map)
 {
-	ft_memdel((void**)&e->line);
-	ft_memdel((void**)&e->p1.frame_list);
-	ft_memdel((void**)&e->p2.frame_list);
+	int		height;
+
+	height = -1;
+	if (!(map->tab_map = (char **)malloc(sizeof(char *) * (map->height + 1))))
+		error(-1);
+	map->tab_map[map->height] = NULL;
+	while (++height < map->height)
+		get_next_line(1, &map->tab_map[height]) == -1 ? error(-1) : 0;
+}
+
+void	init_tab_piece(t_piece *piece)
+{
+	int		height;
+
+	height = -1;
+	if (!(piece->tab_piece =
+		(char **)malloc(sizeof(char *) * (piece->height + 1))))
+		error(-1);
+	piece->tab_piece[piece->height] = NULL;
+	while (++height < piece->height)
+		get_next_line(1, &piece->tab_piece[height]) == -1 ? error(-1) : 0;
 }
 
 void	reset_all(t_fil *e)
@@ -33,16 +51,6 @@ void	reset_all(t_fil *e)
 	while (--e->p2.nb >= 0)
 		ft_memdel((void**)&e->p2.frame_list[e->p2.nb]);
 	e->p2.nb = 0;
-}
-
-void	clean_piece(t_piece *piece)
-{
-	int		tmp;
-
-	tmp = piece->height;
-	while (--tmp >= 0)
-		ft_memdel((void**)&piece->tab_piece[tmp]);
-	ft_memdel((void**)&piece->tab_piece);
 }
 
 void	init(t_fil *e)

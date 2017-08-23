@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 18:19:45 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 01:04:33 by rlecart          ###   ########.fr       */
+/*   Updated: 2017/08/23 02:37:41 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,6 @@ void	piece_info(t_fil *e)
 		;
 	e->piece.width = ft_atoi(&e->line[i]);
 	ft_memdel((void**)&e->line);
-}
-
-void	init_tab_piece(t_piece *piece)
-{
-	int		height;
-
-	height = -1;
-	if (!(piece->tab_piece =
-		(char **)malloc(sizeof(char *) * (piece->height + 1))))
-		error(-1);
-	piece->tab_piece[piece->height] = NULL;
-	while (++height < piece->height)
-		get_next_line(1, &piece->tab_piece[height]) == -1 ? error(-1) : 0;
 }
 
 void	piece_coor(t_piece *piece, int sw)
@@ -72,5 +59,5 @@ void	get_piece(t_fil *e)
 	piece_info(e);
 	init_tab_piece(&e->piece);
 	piece_coor(&e->piece, 0);
-	clean_piece(&e->piece);
+	clean_tab_piece(&e->piece);
 }

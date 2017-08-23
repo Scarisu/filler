@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:30:55 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 01:04:26 by rlecart          ###   ########.fr       */
+/*   Updated: 2017/08/23 03:41:30 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,28 @@
 
 void	get_info(t_fil *e)
 {
-	int		i;
+	int		width;
 	int		height;
 
-	i = 3;
+	width = 3;
 	height = -1;
 	get_next_line(1, &e->line) == -1 ? error(-1) : 0;
 	ft_memdel((void**)&e->line);
+	init_tab_map(&e->map);
 	while (++height < e->map.height)
 	{
-		get_next_line(1, &e->line) == -1 ? error(-1) : 0;
-		while (e->line[++i])
+		while (e->map.tab_map[++width])
 		{
-			if (e->line[i] == 'x' || e->line[i] == 'X')
-				add_coordinates(&e->p1, (int[2]){i - 4, height});
-			else if (e->line[i] == 'o' || e->line[i] == 'O')
-				add_coordinates(&e->p2, (int[2]){i - 4, height});
+			if (e->map.tab_map[height][width] == 'x' ||
+				e->map.tab_map[height][width] == 'X')
+				check_around(&e->map, &e->p2, height, width);
+			else if (e->map.tab_map[height][width] == 'o' ||
+					 e->map.tab_map[height][width] == 'O')
+				check_around(&e->map, &e->p1, height, width);
 		}
-		i = 3;
-		ft_memdel((void**)&e->line);
+		width = 3;
 	}
+	clean_tab_map(&e->map);
 }
 
 void	get_map_size(t_fil *e)

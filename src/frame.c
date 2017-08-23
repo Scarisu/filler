@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 15:58:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 01:00:31 by rlecart          ###   ########.fr       */
+/*   Updated: 2017/08/23 03:45:44 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,33 @@ void	add_coordinates(t_frame *p, int *coor)
 {
 	if (!(p->frame_list[p->nb] = (int *)malloc(sizeof(int) * 2)))
 		error(-1);
-	(p->frame_list[p->nb])[0] = coor[0];
-	(p->frame_list[p->nb])[1] = coor[1];
+	p->frame_list[p->nb][0] = coor[0];
+	p->frame_list[p->nb][1] = coor[1];
 	p->nb++;
 	//printf("{%c}.%d.[%d.%d]\n", p->player, p->nb, coor[0], coor[1]);
+}
+
+void	check_around(t_map *map, t_frame *p, int height, int width)
+{
+	int		out;
+
+	out = 0;
+	if (height > 0 &&
+		map->tab_map[height - 1][width] != p->player &&
+		map->tab_map[height - 1][width] != p->player - 32)
+		++out;
+	else if (width > 4 &&
+		map->tab_map[height][width - 1] != p->player &&
+		map->tab_map[height][width - 1] != p->player - 32)
+		++out;
+	else if (height < map->height - 1 &&
+		map->tab_map[height + 1][width] != p->player &&
+		map->tab_map[height + 1][width] != p->player - 32)
+		++out;
+	else if (width < map->width + 3 &&
+		map->tab_map[height][width + 1] != p->player &&
+		map->tab_map[height][width + 1] != p->player - 32)
+		++out;
+	if (out != 0)
+		add_coordinates(p, (int[2]){width - 4, height});
 }
