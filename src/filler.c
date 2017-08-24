@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/24 16:30:02 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/24 19:34:48 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,20 @@ int		main(void)
 
 	sw = 1;
 	which_player(&e);
+
+	int	k = open("bongi", O_RDWR);
+	int	kk;
+
+	e.line = (char *)malloc(sizeof(char * ) * 10000);
+	while ((kk = read(0, e.line, 100)))
+	{
+		ft_putstr_fd(ft_itoa(kk), k);
+		ft_putstr_fd("\t", k);
+		ft_putstr_fd(e.line, k);
+		ft_memdel((void**)&e.line);
+		ft_putstr_fd("\n", k);
+	}
+
 	init(&e);
 	while (1)
 	{

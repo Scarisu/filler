@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:30:55 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/24 16:30:36 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/24 19:42:05 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	get_info(t_fil *e)
 	int		width;
 	int		height;
 
+	int	k = open("bongi", O_RDWR);
 	width = 3;
 	height = -1;
 	get_next_line(0, &e->line) == -1 ? error(-1) : 0;

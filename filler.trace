@@ -1,5 +1,2 @@
-seed = 5840
-O: error on input
-./pbernier.filler won
-Score:
-0AGAINST0
+seed = 1127
+O: timedout
