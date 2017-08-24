@@ -6,11 +6,11 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 15:58:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/24 16:16:40 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/24 16:25:08 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <filler.h>
+#include <filler.h> 
 
 void	add_coordinates(t_frame *p, int *coor)
 {

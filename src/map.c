@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:30:55 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/24 14:45:18 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/24 16:30:36 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_info(t_fil *e)
 
 	width = 3;
 	height = -1;
-	get_next_line(1, &e->line) == -1 ? error(-1) : 0;
+	get_next_line(0, &e->line) == -1 ? error(-1) : 0;
 	ft_memdel((void**)&e->line);
 	init_tab_map(&e->map);
 	while (++height < e->map.height)
@@ -42,7 +42,7 @@ void	get_map_size(t_fil *e)
 	int		i;
 
 	i = 8;
-	get_next_line(1, &e->line) == -1 ? error(-1) : 0;
+	get_next_line(0, &e->line) == -1 ? error(-1) : 0;
 	if (e->line[0] != 'P')
 		error(0);
 	e->map.height = ft_atoi(&e->line[i]);

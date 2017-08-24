@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/24 14:50:29 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/24 16:30:02 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		main(void)
 		get_piece(&e);
 		result(&e);
 		sw = 0;
+
 	}
 //	printf("TADA\n");
 //	while (1);

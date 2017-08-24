@@ -6,13 +6,13 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 18:19:45 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/24 14:42:27 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/24 16:25:11 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-void	piece_info(t_fil *e)
+void	piece_info(t_fil *e) 
 {
 	int		i;
 

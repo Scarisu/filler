@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 16:00:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/24 14:45:47 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/24 17:06:53 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,14 @@ void	init_tab_map(t_map *map)
 	if (!(map->tab_map = (char **)malloc(sizeof(char *) * (map->height + 1))))
 		error(-1);
 	map->tab_map[map->height] = NULL;
+	//ft_putstr_fd("0 0\n", 1);
 	while (++height < map->height)
+	{
 		get_next_line(0, &map->tab_map[height]) == -1 ? error(-1) : 0;
+		printf("%s\n", map->tab_map[height]);
+		//ft_putstr_fd("0 0\n", 1);
+	}
+	//ft_putstr_fd("0 0\n", 1);
 }
 
 void	init_tab_piece(t_piece *piece)
