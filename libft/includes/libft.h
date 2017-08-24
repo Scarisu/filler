@@ -129,5 +129,6 @@ int					ft_intlen_base(int nbr, int base);
 int					ft_absolute(int nbr);
 void				ft_strreset(char **as, char *reset);
 size_t				ft_llen(long long nbr);
+void				*ft_realloc(void *ptr, size_t size);
 
 #endif
