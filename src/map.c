@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:30:55 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 03:41:30 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/24 14:45:18 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	get_info(t_fil *e)
 		}
 		width = 3;
 	}
-	clean_tab_map(&e->map);
 }
 
 void	get_map_size(t_fil *e)

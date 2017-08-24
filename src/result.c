@@ -6,25 +6,35 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:26:02 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 03:47:48 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/24 16:05:06 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-void	print_result(t_fil *e)
+void		print_result(int height, int width)
 {
-	// printf("%d.%d [%d.%d] [%d.%d]\n", e->piece.height, e->piece.width,
-	// 	e->piece.coor[0][0], e->piece.coor[0][1],
-	// 	e->piece.coor[1][0], e->piece.coor[1][1]);
+	printf("%d %d\n", height, width);
+}
 
-	int		k;
+void	result(t_fil *e)
+{
+	int	height;
+	int	width;
 
-	k = -1;
-	while (++k < e->p1.nb)
-		printf("p1.{%d.%d}\n", e->p1.frame_list[k][0], e->p1.frame_list[k][1]);
-	k = -1;
-	while (++k < e->p2.nb)
-		printf("p2.{%d.%d}\n", e->p2.frame_list[k][0], e->p2.frame_list[k][1]);
+	height = -1;
+	while (++height < e->map.height)
+	{
+		width = -1;
+		while (++width < e->map.width)
+			if (!check_place(e, height, width))
+			{
+				reset_all(e);
+				print_result(height, width);
+				return ;
+			}
+	}
 	reset_all(e);
+	clean_all(e);
+	print_result(0, 0);
 }

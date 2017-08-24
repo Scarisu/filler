@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 16:00:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 02:36:12 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/24 14:45:47 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_tab_map(t_map *map)
 		error(-1);
 	map->tab_map[map->height] = NULL;
 	while (++height < map->height)
-		get_next_line(1, &map->tab_map[height]) == -1 ? error(-1) : 0;
+		get_next_line(0, &map->tab_map[height]) == -1 ? error(-1) : 0;
 }
 
 void	init_tab_piece(t_piece *piece)
@@ -34,7 +34,7 @@ void	init_tab_piece(t_piece *piece)
 		error(-1);
 	piece->tab_piece[piece->height] = NULL;
 	while (++height < piece->height)
-		get_next_line(1, &piece->tab_piece[height]) == -1 ? error(-1) : 0;
+		get_next_line(0, &piece->tab_piece[height]) == -1 ? error(-1) : 0;
 }
 
 void	reset_all(t_fil *e)
@@ -51,6 +51,7 @@ void	reset_all(t_fil *e)
 	while (--e->p2.nb >= 0)
 		ft_memdel((void**)&e->p2.frame_list[e->p2.nb]);
 	e->p2.nb = 0;
+	clean_tab_map(&e->map);
 }
 
 void	init(t_fil *e)

@@ -1,14 +1,30 @@
-echo "exec p1: pbernier"
-echo "Plateau 4 4:"
-echo " 1234"
-echo "000 O..."
-echo "001 ...."
-echo "002 ...."
-echo "003 ...X"
-echo "P"
-echo "1234"
-echo "000 ...."
-echo "001 ...."
-echo "002 ...."
-echo "003 .xxx"
-echo "="
+$$$ exec p1:
+Plateau 4 4:
+    0123
+000 ....
+001 .X..
+002 ..O.
+003 ....
+Piece 1 2:
+**
+
+$$$ exec p1:
+Plateau 4 4:
+    0123
+000 ....
+001 .xo.
+002 .xo.
+003 ....
+Piece 2 3:
+.**
+.**
+
+Plateau 4 4:
+    0123
+000 XXXX
+001 Xxo.
+002 .xo.
+003 ..oo
+Piece 2 3:
+***
+.**
