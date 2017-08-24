@@ -6,11 +6,40 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/24 20:04:06 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/24 14:50:29 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
+
+int	sp_gnl(char **line, int size)
+{
+	int		ret;
+	char	buff[1];
+
+	ret = -1;
+	if (!(*line = (char *)malloc(sizeof(char) * (size + 1))))
+		error(-1);
+	*line[size] = '\0';
+	if (size > 0)
+	{
+		ret = read(0, *line, size);
+		if (*line[ret - 1] == '\n')
+			*line[ret - 1] = '\0';
+	}
+	if (size == 0)
+	{
+		while (*line[size] != '\n')
+		{
+			ret = read(0, buff, 1);
+			ft_strjoin_clean_char(line, buff[0]);
+			++size;
+		}
+		*line[size] = '\0';
+		ret = size + 1;
+	}
+	return (ret);
+}
 
 void	which_player(t_fil *e)
 {
@@ -37,6 +66,15 @@ int		main(void)
 	t_fil	e;
 
 	sw = 1;
+
+	int k;
+	while(1)
+	{
+		k = sp_gnl(&e.line, 0);
+		printf("%d %s\n", k, e.line);
+		ft_memdel((void**)&e.line);
+	}
+
 	which_player(&e);
 	init(&e);
 	while (1)
@@ -48,7 +86,6 @@ int		main(void)
 		get_piece(&e);
 		result(&e);
 		sw = 0;
-
 	}
 //	printf("TADA\n");
 //	while (1);

@@ -89,8 +89,7 @@ SRC			=	ft_putstr.c \
 				ft_intlen_base.c \
 				ft_strreset.c \
 				ft_llen.c \
-				get_next_line.c \
-				ft_realloc.c
+				get_next_line.c
 OBJ			=	$(addprefix $(BINDIR),$(SRC:.c=.o))
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra -I includes/ -Ofast
