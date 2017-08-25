@@ -18,25 +18,24 @@ int	sp_gnl(char **line, int size)
 	char	buff[1];
 
 	ret = -1;
+	buff[0] = '\0';
 	if (!(*line = (char *)malloc(sizeof(char) * (size + 1))))
 		error(-1);
-	*line[size] = '\0';
+	(*line)[size] = '\0';
 	if (size > 0)
-	{
-		ret = read(0, *line, size);
-		if (*line[ret - 1] == '\n')
-			*line[ret - 1] = '\0';
-	}
+	 	if ((ret = read(0, *line, size)) > 0 && (*line)[ret - 1] == '\n')
+	 		(*line)[ret - 1] = '\0';
 	if (size == 0)
 	{
-		while (*line[size] != '\n')
+		while (buff[0] != '\n')
 		{
-			ret = read(0, buff, 1);
+			if ((ret = read(0, buff, 1)) == -1)
+				return (ret);
 			ft_strjoin_clean_char(line, buff[0]);
 			++size;
 		}
-		*line[size] = '\0';
-		ret = size + 1;
+		(*line)[size - 1] = '\0';
+		ret = size;
 	}
 	return (ret);
 }
@@ -55,8 +54,9 @@ void	which_player(t_fil *e)
 
 void	error(int i)
 {
-	(i == -1) ? ft_putstr("Malloc error\n") : 0;
-	(i == 0) ? ft_putstr("filler_vm: error on input\n") : 0;
+	(i == -1) ? ft_putstr_fd("Malloc error\n", 2) : 0;
+	(i == 0) ? ft_putstr_fd("filler_vm: error on input\n", 2) : 0;
+	(i == 1) ? ft_putstr_fd("Can't read file\n", 2) : 0;
 	exit(-1);
 }
 
@@ -67,13 +67,14 @@ int		main(void)
 
 	sw = 1;
 
-	int k;
-	while(1)
-	{
-		k = sp_gnl(&e.line, 0);
-		printf("%d %s\n", k, e.line);
-		ft_memdel((void**)&e.line);
-	}
+	//int k;
+	// while(1)
+	// {
+	// 	printf("Ok\n");
+	// 	k = sp_gnl(&e.line, 5);
+	// 	printf("%d %s\n", k, e.line);
+	// 	ft_memdel((void**)&e.line);
+	// }
 
 	which_player(&e);
 	init(&e);
