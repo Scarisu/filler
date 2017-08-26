@@ -6,7 +6,7 @@
 #    By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:32:35 by pbernier          #+#    #+#              #
-#    Updated: 2017/08/26 14:41:24 by pbernier         ###   ########.fr        #
+#    Updated: 2017/08/26 15:05:40 by pbernier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,17 +22,20 @@ SRC				=	filler.c \
 					result.c \
 					clear.c
 OBJ				=	$(addprefix $(BINDIR),$(SRC:.c=.o))
-LIB				=	libft/libft.a
+LIB				=	lib/libft/libft.a \
+					lib/minilibx_macos_sierra/libmlx.a
 CC				=	gcc
 FLAGS			=	-Wall -Werror -Wextra -Ofast
-INCLUDES		=	-I includes/ -I libft/includes/
+FLAGS_MLX		=	-framework OpenGL -framework AppKit
+INCLUDES		=	-I includes/ -I lib/libft/includes/ -I lib/minilibx_macos_sierra/
 
 all: $(NAME)
 
 $(NAME): $(BINDIR) $(OBJ)
-	@make -C libft
+	@make -C ./lib/libft
+	@make -C ./lib/minilibx_macos_sierra
 	@printf "[$(PROJECT)] Bin compilation done.                                                \n"
-	@$(CC) -o $(NAME) $(OBJ) $(LIB) $(FLAGS)
+	@$(CC) -o $(NAME) $(OBJ) $(LIB) $(FLAGS) $(FLAGS_MLX)
 	@printf "[$(PROJECT)] $(NAME) compiled.                                                    \n"
 
 
@@ -46,14 +49,14 @@ $(BINDIR):
 clean:
 	@rm -f $(OBJ)
 	@rm -rf $(BINDIR)
-	@make -C libft clean
+	@make -C ./lib/libft clean
+	@make -C ./lib/minilibx_macos_sierra clean
 	@printf "[$(PROJECT)] Obj removed.                                                           \n"
 
 fclean: clean
 	@rm -f $(LIB)
-	@rm -f $(NAME)
+	@rm -rf $(NAME)
 	@printf "[$(PROJECT)] $(NAME) removed.                                                       \n"
-
 
 re: fclean all
 
