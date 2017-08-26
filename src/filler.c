@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/26 14:40:03 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/26 15:12:56 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		sp_gnl(char **line)
 	int		size;
 	char	buff[1];
 
-	ret = -1;
 	size = 0;
 	buff[0] = '\0';
 	if (!(*line = (char *)malloc(sizeof(char) * (size + 1))))
@@ -27,7 +26,7 @@ int		sp_gnl(char **line)
 	while (buff[0] != '\n')
 	{
 		if ((ret = read(0, buff, 1)) == -1)
-			return (ret);
+			error (1);
 		ft_strjoin_clean_char(line, buff[0]);
 		++size;
 	}
