@@ -6,7 +6,7 @@
 #    By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:32:35 by pbernier          #+#    #+#              #
-#    Updated: 2017/08/26 15:05:40 by pbernier         ###   ########.fr        #
+#    Updated: 2017/08/26 15:53:24 by pbernier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC				=	filler.c \
 					init.c \
 					piece.c \
 					result.c \
-					clear.c
+					clear.c \
+					graphic.c
 OBJ				=	$(addprefix $(BINDIR),$(SRC:.c=.o))
 LIB				=	lib/libft/libft.a \
 					lib/minilibx_macos_sierra/libmlx.a

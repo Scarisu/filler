@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 16:00:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/26 15:30:27 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/26 16:50:35 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,29 +54,30 @@ void	reset_all(t_fil *e)
 	clean_tab_map(&e->map);
 }
 
-void	init_window()
-{
-	int		i;
-
-	e->gra.height = ()
-	e->gra.width = 
-	e->gra.mlx = mlx_init();
-	e->gra.win = mlx_new_window(e->gra.mlx, e, Y, "filler");
-	e->gra.img = mlx_new_image(e->gra.mlx, X, Y);
-	e->gra.data = mlx_get_data_addr(e->gra.img, &i, &i, &i);
-}
+/*
+**void	init_window(t_fil *e)
+**{
+**	int		i;
+**
+**	e->gra.mlx = mlx_init();
+**	e->gra.win = mlx_new_window(e->gra.mlx, X, Y, "filler");
+**	e->gra.img = mlx_new_image(e->gra.mlx, X, Y);
+**	e->gra.data = mlx_get_data_addr(e->gra.img, &i, &i, &i);
+**}
+*/
 
 void	init(t_fil *e)
 {
 	int		max_poss;
 
 	get_map_size(e);
-	init
 	max_poss = e->map.height * e->map.width;
 	if (!(e->p1.frame_list = (int **)malloc(sizeof(int*) * max_poss)))
 		error(-1);
 	if (!(e->p2.frame_list = (int **)malloc(sizeof(int*) * max_poss)))
 		error(-1);
+	e->parser[0] = 1;
+	e->parser[1] = 0;
 	e->p1.nb = 0;
 	e->p2.nb = 0;
 	e->piece.size = 0;

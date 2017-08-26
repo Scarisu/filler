@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/26 15:12:56 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/26 16:40:29 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		sp_gnl(char **line)
 	while (buff[0] != '\n')
 	{
 		if ((ret = read(0, buff, 1)) == -1)
-			error (1);
+			error(1);
 		ft_strjoin_clean_char(line, buff[0]);
 		++size;
 	}

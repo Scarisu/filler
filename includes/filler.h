@@ -6,12 +6,15 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:39:22 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/26 15:28:25 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/26 16:01:01 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLER_H
 # define FILLER_H
+
+# define X 1280
+# define Y 720
 
 # include <libft.h>
 # include <mlx.h>
@@ -59,6 +62,7 @@ typedef struct		s_fil
 	char			*line;
 	char			player;
 	int				result[2];
+	int				parser[2];
 	t_graph			gra;
 	t_piece			piece;
 	t_frame			p1;
@@ -84,5 +88,6 @@ void				clean_tab_map(t_map *map);
 void				check_around(t_map *map, t_frame *p, int height, int width);
 int					check_place(t_fil *e, int height, int width);
 int					sp_gnl(char **line);
+void				witch_way(t_fil *e);
 
 #endif
