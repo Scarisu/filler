@@ -6,43 +6,39 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/24 14:50:29 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/26 14:40:03 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-int	sp_gnl(char **line, int size)
+int		sp_gnl(char **line)
 {
 	int		ret;
+	int		size;
 	char	buff[1];
 
 	ret = -1;
+	size = 0;
 	buff[0] = '\0';
 	if (!(*line = (char *)malloc(sizeof(char) * (size + 1))))
 		error(-1);
 	(*line)[size] = '\0';
-	if (size > 0)
-	 	if ((ret = read(0, *line, size)) > 0 && (*line)[ret - 1] == '\n')
-	 		(*line)[ret - 1] = '\0';
-	if (size == 0)
+	while (buff[0] != '\n')
 	{
-		while (buff[0] != '\n')
-		{
-			if ((ret = read(0, buff, 1)) == -1)
-				return (ret);
-			ft_strjoin_clean_char(line, buff[0]);
-			++size;
-		}
-		(*line)[size - 1] = '\0';
-		ret = size;
+		if ((ret = read(0, buff, 1)) == -1)
+			return (ret);
+		ft_strjoin_clean_char(line, buff[0]);
+		++size;
 	}
+	(*line)[size - 1] = '\0';
+	ret = size;
 	return (ret);
 }
 
 void	which_player(t_fil *e)
 {
-	get_next_line(0, &e->line) == -1 ? error(-1) : 0;
+	sp_gnl(&e->line) == -1 ? error(-1) : 0;
 	if (e->line[10] == '1')
 		e->player = 'o';
 	else if (e->line[10] == '2')
@@ -63,32 +59,22 @@ void	error(int i)
 int		main(void)
 {
 	int		sw;
+	int		ret;
 	t_fil	e;
 
 	sw = 1;
-
-	//int k;
-	// while(1)
-	// {
-	// 	printf("Ok\n");
-	// 	k = sp_gnl(&e.line, 5);
-	// 	printf("%d %s\n", k, e.line);
-	// 	ft_memdel((void**)&e.line);
-	// }
-
+	ret = 0;
 	which_player(&e);
 	init(&e);
-	while (1)
+	while (ret == 0)
 	{
 		if (sw == 0)
-			get_next_line(0, &e.line) == -1 ? error(-1) : 0;
+			sp_gnl(&e.line) == -1 ? error(-1) : 0;
 		ft_memdel((void**)&e.line);
 		get_info(&e);
 		get_piece(&e);
-		result(&e);
+		ret = result(&e);
 		sw = 0;
 	}
-//	printf("TADA\n");
-//	while (1);
 	return (0);
 }

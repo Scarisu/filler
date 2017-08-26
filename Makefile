@@ -6,7 +6,7 @@
 #    By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:32:35 by pbernier          #+#    #+#              #
-#    Updated: 2017/08/23 02:34:11 by pbernier         ###   ########.fr        #
+#    Updated: 2017/08/26 14:41:24 by pbernier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ clean:
 
 fclean: clean
 	@rm -f $(LIB)
-	@rm -rf $(NAME)
+	@rm -f $(NAME)
 	@printf "[$(PROJECT)] $(NAME) removed.                                                       \n"
 
 

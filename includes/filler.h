@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:39:22 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/24 15:03:43 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/26 14:19:21 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void				get_info(t_fil *e);
 void				get_map_size(t_fil *e);
 void				clean_all(t_fil *e);
 void				init(t_fil *e);
-void				result(t_fil *e);
+int					result(t_fil *e);
 void				piece_reset(t_fil *e);
 void				clean_tab_piece(t_piece *piece);
 void				reset_all(t_fil *e);
@@ -71,5 +71,6 @@ void				init_tab_map(t_map *map);
 void				clean_tab_map(t_map *map);
 void				check_around(t_map *map, t_frame *p, int height, int width);
 int					check_place(t_fil *e, int height, int width);
+int					sp_gnl(char **line);
 
 #endif

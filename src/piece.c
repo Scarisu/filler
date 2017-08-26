@@ -6,18 +6,18 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 18:19:45 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/24 16:25:11 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/26 14:15:03 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-void	piece_info(t_fil *e) 
+void	piece_info(t_fil *e)
 {
 	int		i;
 
 	i = 6;
-	get_next_line(0, &e->line) == -1 ? error(-1) : 0;
+	sp_gnl(&e->line) == -1 ? error(-1) : 0;
 	e->piece.height = ft_atoi(&e->line[i]);
 	while (e->line[i++] != ' ')
 		;
