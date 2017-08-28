@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:26:02 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/28 18:32:05 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/28 19:36:44 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,77 @@ void	print_result(t_fil *e, int height, int width, int end)
 	ft_putstr("\n");
 }
 
-int		parser(t_fil *e)
+// void	bresenham(int start[2], int end[2], int **bresenham)
+// {
+// 	dx = abs(end[0] - start[0]);
+// 	dy = abs(end[1] - start[1]);
+// 	sx = start[0] < end[0] ? 1 : -1;
+// 	sy = start[1] < end[1] ? 1 : -1;
+// 	err = (dx > dy ? dx : -dy) / 2;
+// 	while (1)
+// 	{
+// 		if (start[0] < X && start[0] >= 0 && start[1] < Y && start[1] >= 0)
+// 			conv_img(st[0], st[1], e);
+// 		if (start[0] == end[0] && start[1] == end[1])
+// 			break ;
+// 		e2 = err;
+// 		if (e2 > -dx)
+// 		{
+// 			err -= dy;
+// 			start[0] += sx;
+// 		}
+// 		if (e2 < dy)
+// 		{
+// 			err += dx;
+// 			start[1] += sy;
+// 		}
+// 	}
+// }
+
+// if (!check_place(e, height, width))
+// {
+// 	print_result(e, height, width, 0);
+// 	return (0);
+// }
+
+int		parser(t_fil *e, int y, int x)
 {
 	int	height;
 	int	width;
+	int cercle;
+	int	line;
 
-	height = -1;
-	while (++height != e->map.height)
+	(void)e;
+	cercle = 0;
+	line = 0;
+	while (cercle < 3)
 	{
-		width = -1;
-		while (++width != e->map.width)
-			if (!check_place(e, height, width))
+		height = y - cercle;
+		printf("\ncercle\n");
+		printf("[%d<%d]..\n", height, y + cercle + line);
+		while (height <= y + cercle + line)
+		{
+			width = x - cercle;
+			printf("line\n");
+			while (width < x + cercle + line)
 			{
-				print_result(e, height, width, 0);
-				return (0);
+				printf("[%d][%d]\n", height, width);
+				++width;
 			}
+			++height;
+		}
+		++cercle;
+		++line;
 	}
 	return (1);
 }
 
 int		result(t_fil *e)
 {
-	if (!(parser(e)))
+	if (!(parser(e, 0, 0)))
 		return (0);
+	printf("DONE\n");
+	while(1);
 	print_result(e, 0, 0, 1);
 	return (1);
 }

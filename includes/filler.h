@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:39:22 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/28 15:37:13 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/28 18:42:01 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct		s_fil
 	int				sw;
 	char			*line;
 	char			player;
+	int				**bresenham;
 	t_graph			gra;
 	t_piece			piece;
 	t_frame			p1;
