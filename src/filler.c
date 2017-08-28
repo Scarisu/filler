@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/28 16:52:32 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/28 18:28:34 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,5 @@ int		main(void)
 		ret = result(&e);
 		e.sw = 0;
 	}
-	while(1);
 	return (0);
 }
