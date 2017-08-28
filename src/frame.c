@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 15:58:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/26 14:39:23 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/28 15:18:01 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,6 @@ void	add_coordinates(t_frame *p, int *coor)
 	p->frame_list[p->nb][0] = coor[0];
 	p->frame_list[p->nb][1] = coor[1];
 	p->nb++;
-}
-
-void	check_around(t_map *map, t_frame *p, int height, int width)
-{
-	int		out;
-
-	out = 0;
-	if (height > 0 &&
-		map->tab_map[height - 1][width] != p->player &&
-		map->tab_map[height - 1][width] != p->player - 32)
-		++out;
-	else if (width > 4 &&
-		map->tab_map[height][width - 1] != p->player &&
-		map->tab_map[height][width - 1] != p->player - 32)
-		++out;
-	else if (height < map->height - 1 &&
-		map->tab_map[height + 1][width] != p->player &&
-		map->tab_map[height + 1][width] != p->player - 32)
-		++out;
-	else if (width < map->width + 3 &&
-		map->tab_map[height][width + 1] != p->player &&
-		map->tab_map[height][width + 1] != p->player - 32)
-		++out;
-	if (out != 0)
-		add_coordinates(p, (int[2]){height, width - 4});
 }
 
 int		check_place(t_fil *e, int height, int width)

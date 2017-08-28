@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:39:22 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/26 16:01:01 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/28 15:37:13 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,9 @@ typedef struct		s_map
 
 typedef struct		s_fil
 {
+	int				sw;
 	char			*line;
 	char			player;
-	int				result[2];
-	int				parser[2];
 	t_graph			gra;
 	t_piece			piece;
 	t_frame			p1;
@@ -85,9 +84,9 @@ void				reset_all(t_fil *e);
 void				init_tab_piece(t_piece *piece);
 void				init_tab_map(t_map *map);
 void				clean_tab_map(t_map *map);
-void				check_around(t_map *map, t_frame *p, int height, int width);
 int					check_place(t_fil *e, int height, int width);
 int					sp_gnl(char **line);
-void				witch_way(t_fil *e);
+void				clean_piece(t_piece *piece);
+void				clean_frame_list(t_fil *e);
 
 #endif

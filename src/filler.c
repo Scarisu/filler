@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/26 16:40:29 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/28 16:52:32 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,23 +57,22 @@ void	error(int i)
 
 int		main(void)
 {
-	int		sw;
 	int		ret;
 	t_fil	e;
 
-	sw = 1;
 	ret = 0;
 	which_player(&e);
 	init(&e);
 	while (ret == 0)
 	{
-		if (sw == 0)
+		if (e.sw == 0)
 			sp_gnl(&e.line) == -1 ? error(-1) : 0;
 		ft_memdel((void**)&e.line);
 		get_info(&e);
 		get_piece(&e);
 		ret = result(&e);
-		sw = 0;
+		e.sw = 0;
 	}
+	while(1);
 	return (0);
 }
