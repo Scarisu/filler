@@ -6,13 +6,13 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 15:58:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/28 15:18:01 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 13:04:38 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-void	add_coordinates(t_frame *p, int *coor)
+void	add_coordinates_player(t_frame *p, int *coor)
 {
 	if (!(p->frame_list[p->nb] = (int *)malloc(sizeof(int) * 2)))
 		error(-1);
@@ -20,6 +20,15 @@ void	add_coordinates(t_frame *p, int *coor)
 	p->frame_list[p->nb][1] = coor[1];
 	p->nb++;
 }
+
+// void	add_coordinates_bres(t_bres *bres, int *coor)
+// {
+// 	if (!(p->frame_list[p->nb] = (int *)malloc(sizeof(int) * 2)))
+// 		error(-1);
+// 	p->frame_list[p->nb][0] = coor[0];
+// 	p->frame_list[p->nb][1] = coor[1];
+// 	p->nb++;
+// }
 
 int		check_place(t_fil *e, int height, int width)
 {
@@ -47,4 +56,31 @@ int		check_place(t_fil *e, int height, int width)
 	if (poss != 1)
 		return (-1);
 	return (0);
+}
+
+int		parser(t_fil *e, int y, int x)
+{
+	int	height;
+	int	width;
+	int cercle;
+
+	cercle = 0;
+	while (cercle < e->map.height || cercle < e->map.width)
+	{
+		height = y - cercle - 1;
+		while (++height < y + cercle + 1)
+		{
+			width = x - cercle - 1;
+			while (++width < x + cercle + 1)
+				if (height >= 0 && height < e->map.height &&
+				 	width >= 0 && width < e->map.width &&
+					!check_place(e, height, width))
+				{
+					print_result(e, height, width, 0);
+					return (0);
+				}
+		}
+		++cercle;
+	}
+	return (1);
 }

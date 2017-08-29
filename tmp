@@ -28,3 +28,11 @@ Piece 4 4:
 ***.
 ****
 **..
+
+$$$ exec p1: pbernier
+Plateau 2 6:
+    0123
+000 ....O.
+001 .X....
+Piece 1 2:
+**

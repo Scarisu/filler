@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:30:55 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/28 15:36:06 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 12:38:43 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	get_info(t_fil *e)
 		while (e->map.tab_map[++width])
 		{
 			if (e->map.tab_map[height][width] == 'X')
-				add_coordinates(&e->p2, (int[2]){height, width - 4});
+				add_coordinates_player(&e->p2, (int[2]){height, width - 4});
 			else if (e->map.tab_map[height][width] == 'O')
-				add_coordinates(&e->p1, (int[2]){height, width - 4});
+				add_coordinates_player(&e->p1, (int[2]){height, width - 4});
 		}
 		width = 3;
 	}

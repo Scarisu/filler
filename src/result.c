@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:26:02 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/28 19:36:44 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 13:15:12 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,77 +31,38 @@ void	print_result(t_fil *e, int height, int width, int end)
 	ft_putstr("\n");
 }
 
-// void	bresenham(int start[2], int end[2], int **bresenham)
+// void	bresenham(int start[2], int end[2], t_fil *e)
 // {
-// 	dx = abs(end[0] - start[0]);
-// 	dy = abs(end[1] - start[1]);
-// 	sx = start[0] < end[0] ? 1 : -1;
-// 	sy = start[1] < end[1] ? 1 : -1;
-// 	err = (dx > dy ? dx : -dy) / 2;
+// 	e->bres.dx = abs(end[0] - start[0]);
+// 	e->bres.dy = abs(end[1] - start[1]);
+// 	e->bres.sx = start[0] < end[0] ? 1 : -1;
+// 	e->bres.sy = start[1] < end[1] ? 1 : -1;
+// 	e->bres.err = (e->bres.dx > e->bres.dy ? e->bres.dx : -e->bres.dy) / 2;
 // 	while (1)
 // 	{
-// 		if (start[0] < X && start[0] >= 0 && start[1] < Y && start[1] >= 0)
-// 			conv_img(st[0], st[1], e);
+// 		if (start[0] < e->map.width && start[0] >= 0 &&
+// 			start[1] < e->map.height && start[1] >= 0)
+// 			add_coordinates_bres(&e->bres, (int[2]){start[0], start[1]}));
 // 		if (start[0] == end[0] && start[1] == end[1])
 // 			break ;
-// 		e2 = err;
-// 		if (e2 > -dx)
+// 		e->bres.err2 = e->bres.err;
+// 		if (e->bres.err2 > -e->bres.dx)
 // 		{
-// 			err -= dy;
-// 			start[0] += sx;
+// 			e->bres.err -= e->bres.dy;
+// 			start[0] += se->bres.x;
 // 		}
-// 		if (e2 < dy)
+// 		if (e->bres.err2 < e->bres.dy)
 // 		{
-// 			err += dx;
-// 			start[1] += sy;
+// 			e->bres.err += e->bres.dx;
+// 			start[1] += e->bres.sy;
 // 		}
 // 	}
 // }
 
-// if (!check_place(e, height, width))
-// {
-// 	print_result(e, height, width, 0);
-// 	return (0);
-// }
-
-int		parser(t_fil *e, int y, int x)
-{
-	int	height;
-	int	width;
-	int cercle;
-	int	line;
-
-	(void)e;
-	cercle = 0;
-	line = 0;
-	while (cercle < 3)
-	{
-		height = y - cercle;
-		printf("\ncercle\n");
-		printf("[%d<%d]..\n", height, y + cercle + line);
-		while (height <= y + cercle + line)
-		{
-			width = x - cercle;
-			printf("line\n");
-			while (width < x + cercle + line)
-			{
-				printf("[%d][%d]\n", height, width);
-				++width;
-			}
-			++height;
-		}
-		++cercle;
-		++line;
-	}
-	return (1);
-}
-
 int		result(t_fil *e)
 {
-	if (!(parser(e, 0, 0)))
+	if (!(parser(e, e->map.height / 2, e->map.width / 2)))
 		return (0);
-	printf("DONE\n");
-	while(1);
 	print_result(e, 0, 0, 1);
 	return (1);
 }

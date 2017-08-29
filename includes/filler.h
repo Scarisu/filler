@@ -6,15 +6,12 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:39:22 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/28 18:42:01 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 12:51:36 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLER_H
 # define FILLER_H
-
-# define X 1280
-# define Y 720
 
 # include <libft.h>
 # include <mlx.h>
@@ -24,15 +21,17 @@
 # include <errno.h>
 # include <string.h>
 
-typedef struct		s_graph
+typedef struct		s_bres
 {
-	void			*mlx;
-	void			*win;
-	void			*img;
-	char			*data;
-	int				height;
-	int				width;
-}					t_graph;
+	int				**coor;
+	int				nb;
+	int				dx;
+	int				sx;
+	int				dy;
+	int				sy;
+	int				err;
+	int				err2;
+}					t_bres;
 
 typedef struct		s_piece
 {
@@ -62,8 +61,7 @@ typedef struct		s_fil
 	int				sw;
 	char			*line;
 	char			player;
-	int				**bresenham;
-	t_graph			gra;
+	t_bres			bres;
 	t_piece			piece;
 	t_frame			p1;
 	t_frame			p2;
@@ -72,7 +70,7 @@ typedef struct		s_fil
 
 void				error(int i);
 void				get_piece(t_fil *e);
-void				add_coordinates(t_frame *p, int *coor);
+void				add_coordinates_player(t_frame *p, int *coor);
 void				first_play(t_fil *e);
 void				get_info(t_fil *e);
 void				get_map_size(t_fil *e);
@@ -89,5 +87,7 @@ int					check_place(t_fil *e, int height, int width);
 int					sp_gnl(char **line);
 void				clean_piece(t_piece *piece);
 void				clean_frame_list(t_fil *e);
+int					parser(t_fil *e, int y, int x);
+void				print_result(t_fil *e, int height, int width, int end);
 
 #endif
