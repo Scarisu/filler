@@ -6,15 +6,38 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 08:17:31 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 10:49:09 by rlecart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
+int		sp_gnl(char **line)
+{
+	int		ret;
+	int		size;
+	char	buff[1];
+
+	size = 0;
+	buff[0] = '\0';
+	if (!(*line = (char *)malloc(sizeof(char) * (size + 1))))
+		error(-1);
+	(*line)[size] = '\0';
+	while (buff[0] != '\n')
+	{
+		if ((ret = read(0, buff, 1)) == -1)
+			error(1);
+		ft_strjoin_clean_char(line, buff[0]);
+		++size;
+	}
+	(*line)[size - 1] = '\0';
+	ret = size;
+	return (ret);
+}
+
 void	which_player(t_fil *e)
 {
-	get_next_line(0, &e->line) == -1 ? error(-1) : 0;
+	sp_gnl(&e->line) == -1 ? error(-1) : 0;
 	if (e->line[10] == '1')
 		e->player = 'o';
 	else if (e->line[10] == '2')
@@ -26,34 +49,29 @@ void	which_player(t_fil *e)
 
 void	error(int i)
 {
-	(i == -1) ? ft_putstr("Malloc error\n") : 0;
-	(i == 0) ? ft_putstr("filler_vm: error on input\n") : 0;
+	(i == -1) ? ft_putstr_fd("Malloc error\n", 2) : 0;
+	(i == 0) ? ft_putstr_fd("filler_vm: error on input\n", 2) : 0;
+	(i == 1) ? ft_putstr_fd("Can't read file\n", 2) : 0;
 	exit(-1);
 }
 
 int		main(void)
 {
-	int		sw;
 	int		ret;
 	t_fil	e;
 
-	sw = 1;
 	ret = 0;
-	init_struct(&e);
 	which_player(&e);
 	init(&e);
-	while (ret != 1)
+	while (ret == 0)
 	{
-		if (sw == 0)
-			get_next_line(0, &e.line) == -1 ? error(-1) : 0;
+		if (e.sw == 0)
+			sp_gnl(&e.line) == -1 ? error(-1) : 0;
 		ft_memdel((void**)&e.line);
 		get_info(&e);
 		get_piece(&e);
 		ret = result(&e);
-		sw = 0;
+		e.sw = 0;
 	}
-	clean_all(&e);
-//	printf("TADA\n");
-	while (1);
 	return (0);
 }

@@ -6,59 +6,54 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:26:02 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 07:55:02 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 10:46:30 by rlecart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
-/*
-void	print_result(t_fil *e)
+
+void	print_result(t_fil *e, int height, int width, int end)
 {
-	// printf("%d.%d [%d.%d] [%d.%d]\n", e->piece.height, e->piece.width,
-	// 	e->piece.coor[0][0], e->piece.coor[0][1],
-	// 	e->piece.coor[1][0], e->piece.coor[1][1]);
+	char	*str_height;
+	char	*str_width;
 
-	int		k;
-
-	k = -1;
-	while (++k < e->p1.nb)
-		printf("p1.{%d.%d}\n", e->p1.frame_list[k][0], e->p1.frame_list[k][1]);
-	k = -1;
-	while (++k < e->p2.nb)
-		printf("p2.{%d.%d}\n", e->p2.frame_list[k][0], e->p2.frame_list[k][1]);
-	reset_all(e);
+	clean_piece(&e->piece);
+	clean_tab_map(&e->map);
+	if (end == 1)
+		clean_frame_list(e);
+	str_height = ft_itoa(height);
+	ft_putstr(str_height);
+	ft_memdel((void **)&str_height);
+	ft_putstr(" ");
+	str_width = ft_itoa(width);
+	ft_putstr(str_width);
+	ft_memdel((void **)&str_width);
+	ft_putstr("\n");
 }
-*/
+
+int		parser(t_fil *e)
+{
+	int	height;
+	int	width;
+
+	height = -1;
+	while (++height != e->map.height)
+	{
+		width = -1;
+		while (++width != e->map.width)
+			if (!check_place(e, height, width))
+			{
+				print_result(e, height, width, 0);
+				return (0);
+			}
+	}
+	return (1);
+}
 
 int		result(t_fil *e)
 {
-	int		x;
-	int		y;
-
-	y = -1;
-	while (++y < e->map.height)
-	{
-		x = -1;
-		while (++x < e->map.width)
-		{
-			if (!(check_place(e, x, y)))
-			{
-				clean_tab_map(&e->map);
-				reset_all(e);
-				ft_putstr(ft_itoa(y));
-				ft_putstr(" ");
-				ft_putstr(ft_itoa(x));
-				ft_putstr("\n");
-				//printf("%d %d\n", x, y);
-				return (0);
-			}
-		}
-	}
-	clean_tab_map(&e->map);
-	reset_all(e);
-	ft_putstr(ft_itoa(0));
-	ft_putstr(" ");
-	ft_putstr(ft_itoa(0));
-	ft_putstr("\n");
+	if (!(parser(e)))
+		return (0);
+	print_result(e, 0, 0, 1);
 	return (1);
 }

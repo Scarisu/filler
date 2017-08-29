@@ -6,19 +6,33 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:39:22 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/23 07:53:15 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 10:50:36 by rlecart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLER_H
 # define FILLER_H
 
+# define X 1280
+# define Y 720
+
 # include <libft.h>
+# include <mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <errno.h>
 # include <string.h>
+
+typedef struct		s_graph
+{
+	void			*mlx;
+	void			*win;
+	void			*img;
+	char			*data;
+	int				height;
+	int				width;
+}					t_graph;
 
 typedef struct		s_piece
 {
@@ -45,8 +59,10 @@ typedef struct		s_map
 
 typedef struct		s_fil
 {
+	int				sw;
 	char			*line;
 	char			player;
+	t_graph			gra;
 	t_piece			piece;
 	t_frame			p1;
 	t_frame			p2;
@@ -61,15 +77,16 @@ void				get_info(t_fil *e);
 void				get_map_size(t_fil *e);
 void				clean_all(t_fil *e);
 void				init(t_fil *e);
+int					result(t_fil *e);
 void				piece_reset(t_fil *e);
 void				clean_tab_piece(t_piece *piece);
 void				reset_all(t_fil *e);
 void				init_tab_piece(t_piece *piece);
 void				init_tab_map(t_map *map);
 void				clean_tab_map(t_map *map);
-void				check_around(t_map *map, t_frame *p, int height, int width);
-void				init_struct(t_fil *e);
-int					check_place(t_fil *e, int x, int y);
-int					result(t_fil *e);
+int					check_place(t_fil *e, int height, int width);
+int					sp_gnl(char **line);
+void				clean_piece(t_piece *piece);
+void				clean_frame_list(t_fil *e);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:32:35 by pbernier          #+#    #+#              #
-#    Updated: 2017/08/23 08:07:36 by pbernier         ###   ########.fr        #
+#    Updated: 2017/08/29 10:51:54 by rlecart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,23 +22,25 @@ SRC				=	filler.c \
 					result.c \
 					clear.c
 OBJ				=	$(addprefix $(BINDIR),$(SRC:.c=.o))
-LIB				=	libft/libft.a
+LIB				=	lib/libft/libft.a
 CC				=	gcc
-FLAGS			=	-Wall -Werror -Wextra -Ofast -g
-INCLUDES		=	-I includes/ -I libft/includes/
+CFLAGS			=	-Wall -Werror -Wextra -Ofast
+DFLAGS			=	
+FLAGS_MLX		=
+INCLUDES		=	-I includes/ -I lib/libft/includes/ -I lib/minilibx_macos/
 
 all: $(NAME)
 
 $(NAME): $(BINDIR) $(OBJ)
-	@make -C libft
+	@make -C ./lib/libft
 	@printf "[$(PROJECT)] Bin compilation done.                                                \n"
-	@$(CC) -o $(NAME) $(OBJ) $(LIB) $(FLAGS)
+	@$(CC) -o $(NAME) $(OBJ) $(LIB) $(FLAGS) $(FLAGS_MLX) $(DFLAGS)
 	@printf "[$(PROJECT)] $(NAME) compiled.                                                    \n"
 
 
 $(BINDIR)%.o: $(SRCDIR)%.c
 	@printf "[$(PROJECT)] Compiling $< to $@                                                   \r"
-	@$(CC) $(FLAGS) $(INCLUDES) -o $@ -c $<
+	@$(CC) $(FLAGS) $(INCLUDES) -o $@ -c $< $(DFLAGS)
 
 $(BINDIR):
 	@mkdir bin
@@ -46,14 +48,13 @@ $(BINDIR):
 clean:
 	@rm -f $(OBJ)
 	@rm -rf $(BINDIR)
-	@make -C libft clean
+	@make -C ./lib/libft clean
 	@printf "[$(PROJECT)] Obj removed.                                                           \n"
 
 fclean: clean
 	@rm -f $(LIB)
 	@rm -rf $(NAME)
 	@printf "[$(PROJECT)] $(NAME) removed.                                                       \n"
-
 
 re: fclean all
 
