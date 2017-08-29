@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 15:30:55 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/29 12:38:43 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 15:17:56 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ void	get_map_size(t_fil *e)
 
 	i = 8;
 	sp_gnl(&e->line) == -1 ? error(-1) : 0;
-	if (e->line[0] != 'P')
+	if (ft_strncmp(e->line, "Plateau ", 8))
 		error(0);
-	e->map.height = ft_atoi(&e->line[i]);
-	while (e->line[i++] != ' ')
-		;
-	e->map.width = ft_atoi(&e->line[i]);
+	if ((e->map.height = ft_atoi(&e->line[i])) == 0)
+		error(0);
+	while (e->line[i] && e->line[i] != ' ')
+		i++;
+	if ((e->map.width = ft_atoi(&e->line[i])) == 0)
+		error(0);
 }

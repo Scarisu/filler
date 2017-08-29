@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:38:25 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/29 14:52:20 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 15:17:58 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int		sp_gnl(char **line)
 void	which_player(t_fil *e)
 {
 	sp_gnl(&e->line) == -1 ? error(-1) : 0;
+	if (ft_strncmp(e->line, "$$$ exec p", 9))
+		error(0);
 	if (e->line[10] == '1')
 		e->player = 'o';
 	else if (e->line[10] == '2')

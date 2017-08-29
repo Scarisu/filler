@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 18:19:45 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/28 15:55:53 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 15:27:14 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,16 @@ void	piece_info(t_fil *e)
 
 	i = 6;
 	sp_gnl(&e->line) == -1 ? error(-1) : 0;
-	e->piece.height = ft_atoi(&e->line[i]);
-	while (e->line[i++] != ' ')
-		;
-	e->piece.width = ft_atoi(&e->line[i]);
+	if (ft_strncmp(e->line, "Piece ", 6))
+		error(0);
+	if ((e->piece.height = ft_atoi(&e->line[i])) == 0 ||
+			e->piece.height > e->map.height)
+		error(0);
+	while (e->line[i] && e->line[i] != ' ')
+		i++;
+	if ((e->piece.width = ft_atoi(&e->line[i])) == 0 ||
+		e->piece.width > e->map.width)
+		error(0);
 	ft_memdel((void**)&e->line);
 }
 

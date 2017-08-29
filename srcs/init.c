@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 16:00:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/29 13:50:08 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 15:18:03 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ void	init_tab_map(t_map *map)
 		error(-1);
 	map->tab_map[map->height] = NULL;
 	while (++height < map->height)
+	{
 		sp_gnl(&map->tab_map[height]) == -1 ? error(-1) : 0;
+		if ((int)ft_strlen(map->tab_map[height]) != 4 + map->width)
+			error(0);
+	}
 }
 
 void	init_tab_piece(t_piece *piece)
