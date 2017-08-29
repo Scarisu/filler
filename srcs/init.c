@@ -6,7 +6,7 @@
 /*   By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 16:00:10 by pbernier          #+#    #+#             */
-/*   Updated: 2017/08/28 15:51:18 by pbernier         ###   ########.fr       */
+/*   Updated: 2017/08/29 13:50:08 by pbernier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,6 @@ void	init_tab_piece(t_piece *piece)
 	while (++height < piece->height)
 		sp_gnl(&piece->tab_piece[height]) == -1 ? error(-1) : 0;
 }
-
-/*
-**void	init_window(t_fil *e)
-**{
-**	int		i;
-**
-**	e->gra.mlx = mlx_init();
-**	e->gra.win = mlx_new_window(e->gra.mlx, X, Y, "filler");
-**	e->gra.img = mlx_new_image(e->gra.mlx, X, Y);
-**	e->gra.data = mlx_get_data_addr(e->gra.img, &i, &i, &i);
-**}
-*/
 
 void	init(t_fil *e)
 {

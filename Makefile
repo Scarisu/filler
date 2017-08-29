@@ -6,14 +6,14 @@
 #    By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:32:35 by pbernier          #+#    #+#              #
-#    Updated: 2017/08/28 16:45:08 by pbernier         ###   ########.fr        #
+#    Updated: 2017/08/29 14:41:55 by pbernier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PROJECT			=	FILLER
 NAME			=	pbernier.filler
-BINDIR			=	bin/
-SRCDIR			=	src/
+OBJDIR			=	objs/
+SRCDIR			=	srcs/
 SRC				=	filler.c \
 					map.c \
 					frame.c \
@@ -21,33 +21,31 @@ SRC				=	filler.c \
 					piece.c \
 					result.c \
 					clear.c
-OBJ				=	$(addprefix $(BINDIR),$(SRC:.c=.o))
+OBJ				=	$(addprefix $(OBJDIR),$(SRC:.c=.o))
 LIB				=	lib/libft/libft.a
 CC				=	gcc
 FLAGS			=	-Wall -Werror -Wextra -Ofast
-DFLAGS			=	
-FLAGS_MLX		=
-INCLUDES		=	-I includes/ -I lib/libft/includes/ -I lib/minilibx_macos_sierra/
+INCLUDES		=	-I includes/ -I lib/libft/includes/
 
 all: $(NAME)
 
-$(NAME): $(BINDIR) $(OBJ)
+$(NAME): $(OBJDIR) $(OBJ)
 	@make -C ./lib/libft
-	@printf "[$(PROJECT)] Bin compilation done.                                                \n"
-	@$(CC) -o $(NAME) $(OBJ) $(LIB) $(FLAGS) $(FLAGS_MLX) $(DFLAGS)
+	@printf "[$(PROJECT)] Objs compilation done.                                               \n"
+	@$(CC) -o $(NAME) $(OBJ) $(LIB) $(FLAGS) $(FLAGS_MLX)
 	@printf "[$(PROJECT)] $(NAME) compiled.                                                    \n"
 
 
-$(BINDIR)%.o: $(SRCDIR)%.c
+$(OBJDIR)%.o: $(SRCDIR)%.c
 	@printf "[$(PROJECT)] Compiling $< to $@                                                   \r"
-	@$(CC) $(FLAGS) $(INCLUDES) -o $@ -c $< $(DFLAGS)
+	@$(CC) $(FLAGS) $(INCLUDES) -o $@ -c $<
 
-$(BINDIR):
-	@mkdir bin
+$(OBJDIR):
+	@mkdir objs
 
 clean:
 	@rm -f $(OBJ)
-	@rm -rf $(BINDIR)
+	@rm -rf $(OBJDIR)
 	@make -C ./lib/libft clean
 	@printf "[$(PROJECT)] Obj removed.                                                           \n"
 

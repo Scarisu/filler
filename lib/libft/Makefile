@@ -6,14 +6,14 @@
 #    By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/21 03:19:16 by pbernier          #+#    #+#              #
-#    Updated: 2017/08/09 17:52:36 by pbernier         ###   ########.fr        #
+#    Updated: 2017/08/29 14:45:33 by pbernier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PROJECT		=	LIBFT
 NAME		=	libft.a
-BINDIR		=	bin/
-SRCDIR		=	src/
+OBJDIR		=	objs/
+SRCDIR		=	srcs/
 SRC			=	ft_putstr.c \
 				ft_putchar.c \
 				ft_strlen.c \
@@ -90,28 +90,28 @@ SRC			=	ft_putstr.c \
 				ft_strreset.c \
 				ft_llen.c \
 				get_next_line.c
-OBJ			=	$(addprefix $(BINDIR),$(SRC:.c=.o))
+OBJ			=	$(addprefix $(OBJDIR),$(SRC:.c=.o))
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra -I includes/ -Ofast
 
 all: $(NAME)
 
-$(NAME): $(BINDIR) $(OBJ)
-	@printf "[$(PROJECT)] Bin compilation done.                                               \n"
+$(NAME): $(OBJDIR) $(OBJ)
+	@printf "[$(PROJECT)] Objs compilation done.                                              \n"
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@printf "[$(PROJECT)] $(NAME) compiled.                                                   \n"
 
-$(BINDIR)%.o: $(SRCDIR)%.c
+$(OBJDIR)%.o: $(SRCDIR)%.c
 	@printf "\r[$(PROJECT)] Compiling $< to $@                            \r"
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
-$(BINDIR):
-	@mkdir bin
+$(OBJDIR):
+	@mkdir objs
 
 clean:
 	@rm -rf $(OBJ)
-	@rm -rf $(BINDIR)
+	@rm -rf $(OBJDIR)
 	@printf "[$(PROJECT)] Obj removed.\n"
 
 fclean: clean
