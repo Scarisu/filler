@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pbernier <pbernier@student.42.fr>          +#+  +:+       +#+         #
+#    By: rlecart <rlecart@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/11/08 16:32:35 by pbernier          #+#    #+#              #
-#    Updated: 2017/08/29 14:41:55 by pbernier         ###   ########.fr        #
+#    Created: 2016/11/08 16:32:35 by rlecart           #+#    #+#              #
+#    Updated: 2017/08/30 20:11:01 by rlecart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PROJECT			=	FILLER
-NAME			=	pbernier.filler
+NAME			=	rlecart.filler
 OBJDIR			=	objs/
 SRCDIR			=	srcs/
 SRC				=	filler.c \
